@@ -15,11 +15,13 @@
         const WATERSLIDE_MIN_HEIGHT = 48; // in inches
         const LAZY_RIVER_MIN_HEIGHT = 36; // in inches
 
+        // function to get basic user information such as which ride they want, height, and if accompanied
         function buyTicket() {
             const attractionType = prompt("Which attraction do you want to visit: type 'wave' for wave pool, 'water' for waterslide, or 'river' for lazy river?").toLowerCase();
             const userHeight = prompt("What is your height in inches?");
             const withAdult = prompt("Are you with an adult? Please enter 'y'").toLowerCase();
 
+            // Used to output user entries. Mainly using for debug/confirm entries
             console.log("User's selected attraction is " + attractionType);
             console.log("User's height is " + userHeight);
             console.log("User's is with a parent? " + withAdult);
@@ -41,6 +43,7 @@
             }
         }
 
+        // function to check if user can ride selected attraction based on height. will return true or false based on parameters prompt
         function checkHeight(attraction, height) {
             if ((attraction === "wave") && (WAVE_POOL_MIN_HEIGHT <= height)) {
                 return true;
@@ -53,17 +56,14 @@
             }
         }
 
+
+        // function to determine if user can access all rides based on if accompanied by an adult 
         function canAccessAttractions(height, isWithAdult) {
             if (height >= 43 && isWithAdult === "y") {
                 return true;
             } else {
                 return false;
             }
-        } {
-            let userHeight = 45;
-            let isWithAdult = true;
-            let accessStatus = canAccessAttractions(userHeight, isWithAdult);
-            console.log(accessStatus);
         }
     </script>
 </body>
