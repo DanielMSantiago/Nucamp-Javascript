@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Wild Waves Aquatic Park</title>
+</head>
+
+<body>
+    <h1>Wild Waves Aquatic Park</h1>
+    <button type="button" onclick="buyTicket()">Purchase Attraction</button>
+    <script>
+        // global variables 
+        const WAVE_POOL_MIN_HEIGHT = 42; // in inches
+        const WATERSLIDE_MIN_HEIGHT = 48; // in inches
+        const LAZY_RIVER_MIN_HEIGHT = 36; // in inches
+
+        function buyTicket() {
+            const attractionType = prompt("Which attraction do you want to visit: type 'wave' for wave pool, 'water' for waterslide, or 'river' for lazy river?").toLowerCase();
+            const userHeight = prompt("What is your height in inches?");
+            const withAdult = prompt("Are you with an adult? Please enter 'y'").toLowerCase();
+
+            console.log("User's selected attraction is " + attractionType);
+            console.log("User's height is " + userHeight);
+            console.log("User's is with a parent? " + withAdult);
+
+            const isAllowed = checkHeight(attractionType, userHeight);
+
+            if (isAllowed === true) {
+                alert("Access Granted")
+            } else {
+                alert("Access Denied")
+            }
+
+            const WithAdult = canAccessAttractions(userHeight, withAdult);
+
+            if (WithAdult === true) {
+                alert("You can ride all rides");
+            } else {
+                alert("You cannot ride all rides");
+            }
+        }
+
+        function checkHeight(attraction, height) {
+            if ((attraction === "wave") && (WAVE_POOL_MIN_HEIGHT <= height)) {
+                return true;
+            } else if ((attraction === "water") && (WATERSLIDE_MIN_HEIGHT <= height)) {
+                return true;
+            } else if ((attraction === "river") && (LAZY_RIVER_MIN_HEIGHT <= height)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function canAccessAttractions(height, isWithAdult) {
+            if (height >= 43 && isWithAdult === "y") {
+                return true;
+            } else {
+                return false;
+            }
+        } {
+            let userHeight = 45;
+            let isWithAdult = true;
+            let accessStatus = canAccessAttractions(userHeight, isWithAdult);
+            console.log(accessStatus);
+        }
+    </script>
+</body>
+
+</html>
