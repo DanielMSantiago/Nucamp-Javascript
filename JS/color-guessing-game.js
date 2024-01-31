@@ -31,17 +31,12 @@ let runGame = () => {
 //Function to check is guess and target are the same using the array method indexOf. Called within runGame()
 let checkGuess = (guess, target) => {
     let correct = false;
-    let count = 1;
     if (!COLORS_ARRAY.includes(guess)) {
         alert('That color is not in the array');
-        count += 1;
-        correct
     } else if (COLORS_ARRAY.indexOf(guess) > COLORS_ARRAY.indexOf(target)) {
         alert('My color\'s index is lower than that');
-        count += 1;
     } else if (COLORS_ARRAY.indexOf(guess) < COLORS_ARRAY.indexOf(target)) {
         alert('My color\'s index is higher than that');
-        count += 1;
     } else {
         correct = true;
     }
